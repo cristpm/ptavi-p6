@@ -30,7 +30,7 @@ data = my_socket.recv(1024)
 print('Recibido -- ', data.decode('utf-8'))
 
 if METODO == 'INVITE':
-    MENSAJE = 'ACK sip:' + RECEPTOR + '@' + IP + ' SIP/2.0\r\n' 
+    MENSAJE = 'ACK sip:' + LOGIN + '@' + IP + ' SIP/2.0\r\n' 
     my_socket.send(bytes(MENSAJE, 'utf-8') + b'\r\n')
     print('Enviando -- ',MENSAJE) 
 print("Terminando socket...")
