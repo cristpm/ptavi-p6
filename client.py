@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-"""
-Programa cliente SIP
-"""
+"""Programa cliente SIP."""
 
 import socket
 import sys
@@ -23,18 +21,17 @@ my_socket.connect((IP, PORT))
 # Contenido que vamos a enviar
 MENSAJE = METODO + ' sip:' + LOGIN + '@' + IP + ' SIP/2.0\r\n'
 my_socket.send(bytes(MENSAJE, 'utf-8') + b'\r\n')
-print('Enviando -- ',MENSAJE)    
+print('Enviando -- ')
+print(MENSAJE)
 
 # Contenido que recibimos de respuesta
 data = my_socket.recv(1024)
-print('Recibido -- ', data.decode('utf-8'))
+print('Recibido -- ')
+print(data.decode('utf-8'))
 
 if METODO == 'INVITE':
-    MENSAJE = 'ACK sip:' + LOGIN + '@' + IP + ' SIP/2.0\r\n' 
+    MENSAJE = 'ACK sip:' + LOGIN + '@' + IP + ' SIP/2.0\r\n'
     my_socket.send(bytes(MENSAJE, 'utf-8') + b'\r\n')
-    print('Enviando -- ',MENSAJE) 
-print("Terminando socket...")
-
-# Cerramos todo
+    print('Enviando -- ')
+    print(MENSAJE)
 my_socket.close()
-print("Fin.")
