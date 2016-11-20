@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 """
-Clase (y programa principal) para un servidor de eco en UDP simple
+Clase (y programa principal) para un servidor SIP
 """
 
 import socketserver
@@ -13,12 +13,11 @@ class ServerHandler(socketserver.DatagramRequestHandler):
     """
 
     def handle(self):
-        # Leyendo 
         line = self.rfile.read()
         data = line.decode('utf-8')
-        METODO = data.split(' ')[0]
         print("El cliente nos manda:")
         print(data)
+        METODO = data.split(' ')[0]
         METODOS = ['INVITE','BYE','ACK']
         if METODO in METODOS:
             if METODO == 'INVITE':
@@ -29,8 +28,6 @@ class ServerHandler(socketserver.DatagramRequestHandler):
             self.wfile.write(b"SIP/2.0 405 Method Not Allowed\r\n\r\n") 
             
             
-
-
 if __name__ == "__main__":
     try:
         IP = sys.argv[1]
