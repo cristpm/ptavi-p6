@@ -25,7 +25,7 @@ class ServerHandler(socketserver.DatagramRequestHandler):
             if METODO == 'ACK':
                 # aEjecutar es un string con lo que se ha de ejecutar en la
                 # shell
-                aEjecutar = 'mp32rtp -i '+ IP + ' -p 23032 < ' + fichero_audio
+                aEjecutar = 'mp32rtp -i ' + IP + ' -p 23032 < ' + fichero_audio
                 print("Vamos a ejecutar", aEjecutar)
                 os.system(aEjecutar)
             else:
@@ -53,5 +53,3 @@ if __name__ == "__main__":
         serv.serve_forever()
     except KeyboardInterrupt:
         print("Finalizado servidor")
-        
-    
